@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhotoGallery</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap">
+</head>
+<body>
+
+    <header class="header pb-lg-0">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-between">
+                <a class="navbar-brand" href="/">PhotoGallery</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="form-wrapper d-flex align-items-center justify-content-center">
+            <form action="{% url 'load' %}" enctype="multipart/form-data" method="POST" id="LoaderForm">
+                        {% csrf_token %}
+                <div class="container d-flex flex-column justify-content-center align-items-center">
+                    <div class="mb-3">
+{#                        <input class="form-control" type="file" id="image">#}
+                        {{ form.image }}
+                    </div>
+                <div class="btn-wrapper">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                
+              </div> 
+          </form>    
+        </div>
+            
+               
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-lg-3 footer__logo">
+              <h4>PhotoGallery</h4>
+          </div>
+          <div class="col-lg-3 address">
+            <p>John Street,<br>Doe Building<br>11/8 EDIRNE/TURKEY</p>
+          </div>
+          <div class="col-lg-3 emails">
+            <div class="email-wrapper row">
+              <p class="email">info@envato.com</p>
+            </div>
+            <div class="phone-wrapper row">
+              <p class="phone">900 800 70 60</p>
+            </div>
+  
+          </div>
+          <div class="col-lg-3 social">
+            <div class="social__icons d-flex justify-content-around">
+                 <img src="{% static '/img/facebook-icon.png' %}" alt="facebook-icon">
+                 <img src="{% static '/img/twitter-icon.png' %}" alt="twitter-icon">
+                  <img src="{% static '/img/linkedin-icon.png' %}" alt="linkedin-icon">
+                  <img src="{% static '/img/plus-icon.png' %}" alt="plus-icon">
+            </div>
+            <p class="social__text">All right reserved</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="{% static '/script/bootstrap.js' %}></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    </body>
+</html>

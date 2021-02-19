@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhotoGallery</title>
+    <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}" type="text/css" media="all">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap">
+
+</head>
+<body>
+
+    <header class="header pb-lg-0">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-between">
+                <a class="navbar-brand" href="">PhotoGallery</a>
+                <a href="{% url 'new' %}" type="button" class="btn  btn-secondary d-lg-block" target="_blank">Add a photo</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        
+        <div class="photo1-wrapper px-3 pt-4 pb-5">
+            <div class="container">
+                <div class="row photo1-cards__wrapper">
+                  {% for images in image_list %}
+                    <div class="photo1-card card col-lg-4 px-3 col-md-6">
+                        <a href="/{{ images.id }}" target="_blank">
+                            <img src="{{ MEDIA_URL }}{{ images.image }}" class="card-img-top" alt="...">
+                        </a>
+                    </div>
+                  {% endfor %}
+
+            </div>
+        
+            </div>
+        </div>
+    
+
+        
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-lg-3 footer__logo">
+                <h4>PhotoGallery</h4>
+            </div>
+            <div class="col-lg-3 address">
+              <p>John Street,<br>Doe Building<br>11/8 EDIRNE/TURKEY</p>
+            </div>
+            <div class="col-lg-3 emails">
+              <div class="email-wrapper row">
+                <p class="email">info@envato.com</p>
+              </div>
+              <div class="phone-wrapper row">
+                <p class="phone">900 800 70 60</p>
+              </div>
+    
+            </div>
+            <div class="col-lg-3 social">
+              <div class="social__icons d-flex justify-content-around">
+                 <img src="{% static 'img/facebook-icon.png' %}" alt="facebook-icon">
+                 <img src="{% static 'img/twitter-icon.png' %}" alt="twitter-icon">
+                  <img src="{% static 'img/linkedin-icon.png' %}" alt="linkedin-icon">
+                  <img src="{% static 'img/plus-icon.png' %}" alt="plus-icon">
+              </div>
+              <p class="social__text">All rights reserved</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+      
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+     <script src="{% static '/script/bootstrap.js' %}"></script>
+
+    </body>
+</html>
